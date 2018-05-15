@@ -1,0 +1,49 @@
+# server configuration
+server:
+    port: 8092
+    compression:
+        enabled: true
+        mime-types: text/html,text/xml,text/plain,text/json,application/json
+    tomcat:
+        uri-encoding: utf-8
+        accesslog:
+            enabled: true
+            pattern:
+                # {%{X-Real-IP}i %u %t %r %s %b %{Referer}i %{User-Agent}i}
+            remote_ip_header: x-forwarded-for
+
+spring:
+    freemarker:
+        template-loader-path: classpath:/templates/
+        cache: false
+        charset: utf-8
+        check-template-location: true
+        content-type: text/html;charset=UTF-8
+        expose-request-attributes: true
+        expose-session-attributes: true
+        request-context-attribute: request
+        suffix: .ftl
+
+# dubbo configuration
+dubbo:
+    application:
+        name: frontend
+        qos-port: 22223
+    protocal:
+        name: dubbo
+    registry:
+         protocol: zookeeper
+         address: 127.0.0.1:2181
+
+# logback
+logging:
+    level:
+        org:
+            apache:
+                ibatis: DEBUG
+            mybatis: DEBUG
+            springframework: INFO
+        com:
+            love:
+                dao: INFO
+    config: classpath:logback-local.xml

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.loveq.dao.UserMapper">
+
+    <select id="listUser" parameterType="com.loveq.domain.vo.CommonVO" resultType="com.loveq.domain.dto.UserDTO">
+        SELECT
+        <include refid="all_fields"/>
+        FROM t_user
+        WHERE nickname = #{nickname}
+    </select>
+
+
+    <select id="listUser_COUNT" resultType="java.lang.Long">
+        SELECT count(1)
+        FROM t_user
+        WHERE 1 = 1 AND nickname = #{nickname}
+    </select>
+</mapper>
