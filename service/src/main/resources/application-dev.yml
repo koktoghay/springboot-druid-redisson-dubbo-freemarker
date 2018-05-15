@@ -12,7 +12,8 @@ server:
                 # {%{X-Real-IP}i %u %t %r %s %b %{Referer}i %{User-Agent}i}
             remote_ip_header: x-forwarded-for
 
-# Database/Redis configuration
+
+# Database configuration
 spring:
     datasource:
         druid:
@@ -51,26 +52,12 @@ spring:
                     conditionAndAlwayTrueAllow: true
                     selectWhereAlwayTrueCheck: true
                     drop-table-allow: false
-
+# pagehelper
 pagehelper:
     helperDialect: mysql
     reasonable: true
     supportMethodsArguments: true
     params: count=countSql
-
-# Database/Redis configuration
-#spring:
-#    redis:
-#        database: 0
-#        host: 127.0.0.1
-#        port: 6379
-#        pool:
-#            max-active: 60
-#            max-idle: 60
-#            max-wait: 10000
-#    redisIsolate:
-#        thresholdSize: 51200
-#        thresholdTime: 5
 
 
 # dubbo configuration
@@ -87,6 +74,7 @@ dubbo:
     registry:
          protocol: zookeeper
          address: 127.0.0.1:2181
+
 
 # logback
 logging:
